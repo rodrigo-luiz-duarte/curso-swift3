@@ -11,10 +11,10 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet
-    var nameField : UITextField!
+    var nameField : UITextField?
     
     @IBOutlet
-    var happinessField : UITextField!
+    var happinessField : UITextField?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +28,15 @@ class ViewController: UIViewController {
 
     @IBAction
     func add() {
-        let name = nameField.text
-        let happiness = happinessField.text
-        print("Eaten \(String(describing: name)) with \(String(describing: happiness))")
+        
+        if nameField == nil || happinessField == nil {
+            return
+        }
+        let name = nameField!.text!
+        if let happiness = Int(happinessField!.text!) {
+            let meal = Meal(name: name, happiness: happiness)
+            print("Eaten \(meal.name) with happiness \(meal.happiness)")
+        }
     }
 }
 
