@@ -56,7 +56,7 @@ class MealTableViewController: UITableViewController, MealManagerDelegate {
                 let row = indexPath.row
                 let meal = meals[row]
                 
-                let details = UIAlertController(title: meal.name, message: "Happiness: \(meal.happiness)", preferredStyle: UIAlertControllerStyle.alert)
+                let details = UIAlertController(title: meal.name, message: meal.details(), preferredStyle: UIAlertControllerStyle.alert)
                 
                 let ok = UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)
                 details.addAction(ok)
