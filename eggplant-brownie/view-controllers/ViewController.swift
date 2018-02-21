@@ -79,29 +79,45 @@ class ViewController: UIViewController,
                     print("Removeu item \(item.name)")
                 }
             }
+        } else {
+            Alert(controller: self).showErrorMessage(message: "Não foi possível recuperar a célula selecionada.")
         }
+    }
+    
+    func convertToInt(_ text: String?) -> Int? {
+        
+        if let number = text {
+            return Int(number)
+        }
+        return nil
+    }
+    
+    func getMealFromForm() -> Meal? {
+        
+        if let name = nameField?.text {
+            if let happiness = convertToInt(happinessField?.text) {
+                return Meal(name: name, happiness: happiness, items: itemsSelected)
+            }
+        }
+        return nil
     }
 
     @IBAction
     func add() {
         
-        if nameField == nil || happinessField == nil {
-            return
+        if let meal = getMealFromForm() {
+            if let delegate = mealManagerDelegate {
+                delegate.addMeal(meal)
+                if let navigation = navigationController {
+                    navigation.popViewController(animated: true)
+                } else {
+                    Alert(controller: self).show(message: "Não foi possível retornar, mas refeição foi adicionada com sucesso.")
+                }
+                return
+            }
         }
         
-        let name = nameField!.text!
-        if let happiness = Int(happinessField!.text!) {
-            let meal = Meal(name: name, happiness: happiness, items: itemsSelected)
-            print("Eaten \(meal.name) with happiness \(meal.happiness) with \(meal.items)")
-            
-            if let manager = self.mealManagerDelegate {
-                manager.addMeal(meal)
-            }
-            
-            if let navigation = navigationController {
-                navigation.popViewController(animated: true)
-            }
-        }
+        Alert(controller: self).show(message: "Não foi possível adicionar a refeição")
     }
     
     @objc func showNewItem() {
@@ -110,6 +126,8 @@ class ViewController: UIViewController,
         
         if let navigation = navigationController {
             navigation.pushViewController(newItem, animated: true)
+        } else {
+            Alert(controller: self).showErrorMessage(message: "Não foi possível exibir a tela de adição de itens.")
         }
     }
     
@@ -119,12 +137,7 @@ class ViewController: UIViewController,
         if let table = tableView {
             table.reloadData()
         } else {
-            
-            let alert = UIAlertController(title: "Sorry", message: "Unable to update the table",
-                                          preferredStyle: UIAlertControllerStyle.alert)
-            let ok = UIAlertAction(title: "Understood", style: UIAlertActionStyle.cancel, handler: nil)
-            alert.addAction(ok)
-            present(alert, animated: true, completion: nil)
+            Alert(controller: self).showErrorMessage(message: "Não foi possível atualizar dados da tabela")
         }
     }
 }
