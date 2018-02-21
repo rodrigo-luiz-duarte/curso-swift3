@@ -10,13 +10,14 @@ import Foundation
 
 class Meal {
     
-    var name:String
-    var happiness:Int
-    var items = Array<Item>()
+    let name:String
+    let happiness:Int
+    let items:Array<Item>
     
-    init(name:String, happiness:Int) {
+    init(name:String, happiness:Int, items:Array<Item> = []) {
         self.name = name
         self.happiness = happiness
+        self.items = items
     }
     
     func totalCalories() -> Double {
