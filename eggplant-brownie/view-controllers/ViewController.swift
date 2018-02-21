@@ -37,6 +37,8 @@ class ViewController: UIViewController,
                                             style: UIBarButtonItemStyle.plain,
                                             target: self, action: #selector(showNewItem))
         navigationItem.rightBarButtonItem = newItemButton
+        
+        items = Dao().load()
 
     }
 
@@ -133,7 +135,7 @@ class ViewController: UIViewController,
     
     func addItem(_ item: Item) {
         items.append(item)
-        
+        Dao().save(items)
         if let table = tableView {
             table.reloadData()
         } else {

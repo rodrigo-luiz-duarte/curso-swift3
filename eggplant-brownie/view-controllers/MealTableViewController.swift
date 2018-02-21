@@ -14,6 +14,10 @@ class MealTableViewController: UITableViewController, MealManagerDelegate {
                  Meal(name: "Zucchini Muffin", happiness: 4),
                  Meal(name: "Daniela's Cheese Cake", happiness: 5)]
     
+    override func viewDidLoad() {
+        meals = Dao().load()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return meals.count
     }
@@ -37,6 +41,7 @@ class MealTableViewController: UITableViewController, MealManagerDelegate {
      */
     func addMeal(_ meal:Meal) {
         meals.append(meal)
+        Dao().save(meals)
         tableView.reloadData()
     }
     
@@ -58,6 +63,7 @@ class MealTableViewController: UITableViewController, MealManagerDelegate {
                 
                 DetailMealController(controller: self).showDetails(meal: meal, removeHandler: { action in
                     self.meals.remove(at: row)
+                    Dao().save(self.meals)
                     self.tableView.reloadData()
                 })
             }

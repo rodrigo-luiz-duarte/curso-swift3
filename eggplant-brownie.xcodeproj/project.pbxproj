@@ -23,6 +23,7 @@
 		5B431FF2203D02B700A05A15 /* ItemManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B431FF1203D02B700A05A15 /* ItemManagerDelegate.swift */; };
 		5B431FF4203D920900A05A15 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B431FF3203D920900A05A15 /* Alert.swift */; };
 		5B431FF6203DA89700A05A15 /* DetailMealController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B431FF5203DA89700A05A15 /* DetailMealController.swift */; };
+		5B431FF9203DC0A300A05A15 /* Dao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B431FF8203DC0A300A05A15 /* Dao.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		5B431FF1203D02B700A05A15 /* ItemManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemManagerDelegate.swift; sourceTree = "<group>"; };
 		5B431FF3203D920900A05A15 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		5B431FF5203DA89700A05A15 /* DetailMealController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMealController.swift; sourceTree = "<group>"; };
+		5B431FF8203DC0A300A05A15 /* Dao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dao.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 		5B431FAB203B704300A05A15 /* eggplant-brownie */ = {
 			isa = PBXGroup;
 			children = (
+				5B431FF7203DC08600A05A15 /* dao */,
 				5B431FE8203CC7BD00A05A15 /* delegates */,
 				5B431FDB203C6C7400A05A15 /* models */,
 				5B431FDF203C6CD200A05A15 /* views */,
@@ -184,6 +187,14 @@
 				5B431FF1203D02B700A05A15 /* ItemManagerDelegate.swift */,
 			);
 			path = delegates;
+			sourceTree = "<group>";
+		};
+		5B431FF7203DC08600A05A15 /* dao */ = {
+			isa = PBXGroup;
+			children = (
+				5B431FF8203DC0A300A05A15 /* Dao.swift */,
+			);
+			path = dao;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,6 +334,7 @@
 			files = (
 				5B431FF4203D920900A05A15 /* Alert.swift in Sources */,
 				5B431FE7203C9F9A00A05A15 /* MealTableViewController.swift in Sources */,
+				5B431FF9203DC0A300A05A15 /* Dao.swift in Sources */,
 				5B431FF2203D02B700A05A15 /* ItemManagerDelegate.swift in Sources */,
 				5B431FE5203C6EBA00A05A15 /* Item.swift in Sources */,
 				5B431FDE203C6C8B00A05A15 /* ViewController.swift in Sources */,
